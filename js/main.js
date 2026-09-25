@@ -95,3 +95,13 @@ btnSound.addEventListener('click', () => {
 // --- Partida ---
 // A abertura com as instruções aparece sempre, em toda visita ao jogo.
 screenManager.show('intro');
+
+// --- PWA: service worker (cache offline) ---
+// Precisa de http://localhost ou HTTPS; em file:// o navegador ignora.
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {
+      /* sem SW o jogo funciona igual — só perde o offline */
+    });
+  });
+}

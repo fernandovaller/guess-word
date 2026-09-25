@@ -18,6 +18,18 @@ python3 -m http.server 8080
 
 Abra http://localhost:8080 no navegador.
 
+## Instalar como app (PWA)
+
+O jogo é instalável e funciona offline (service worker com cache de tudo).
+
+- **Chrome/Edge (desktop)**: ícone de instalar na barra de endereço
+- **Android**: menu do navegador → "Adicionar à tela inicial"
+- **iOS (Safari)**: botão compartilhar → "Adicionar à Tela de Início"
+
+O service worker só ativa em `http://localhost` ou HTTPS — em `file://` o jogo
+funciona normal, só perde o offline. Ao publicar uma versão nova, bumpa o
+`CACHE` no topo de `sw.js` (ex.: `'gtw-v2'`) para os clientes atualizarem.
+
 ## Regras
 
 A tela de abertura ("como jogar") aparece sempre ao entrar no jogo; o botão
@@ -34,8 +46,10 @@ A tela de abertura ("como jogar") aparece sempre ao entrar no jogo; o botão
 ## Estrutura
 
 ```
-├── index.html        # as 5 telas: abertura (como jogar), menu, jogo, resultado, estatísticas
-├── css/styles.css    # tema visual, tiles, teclado, animações
+├── index.html             # as 5 telas: abertura (como jogar), menu, jogo, resultado, estatísticas
+├── manifest.webmanifest   # PWA: nome, ícones, cores
+├── sw.js                  # PWA: service worker (cache offline)
+├── css/styles.css    # tema visual, tiles, teclado, animações, modal
 ├── js/
 │   ├── main.js             # bootstrap: composição (views + services + controllers)
 │   ├── controllers/        # um controller por tela: eventos e fluxo
@@ -46,6 +60,7 @@ A tela de abertura ("como jogar") aparece sempre ao entrar no jogo; o botão
 │   │   └── StatsController.js
 │   ├── views/              # renderização de DOM (sem regras)
 │   │   ├── ScreenManager.js  # navegação entre telas
+│   │   ├── ConfirmDialog.js  # modal de confirmação (promise)
 │   │   ├── images.js         # <img> dos temas + fallback por emoji
 │   │   ├── MenuView.js
 │   │   ├── GameView.js
@@ -56,8 +71,11 @@ A tela de abertura ("como jogar") aparece sempre ao entrar no jogo; o botão
 │   ├── data.js             # temas e palavras
 │   ├── icons.js            # ícones SVG inline (+ override por imagem)
 │   ├── audio.js            # service: efeitos sonoros com WebAudio (sem arquivos)
-│   ├── storage.js          # service: localStorage (estatísticas, mudo, abertura)
+│   ├── storage.js          # service: localStorage (estatísticas, mudo)
 │   └── utils.js            # normalização de acentos, sorteio
+├── assets/
+│   ├── themes/       # imagem por tema (com fallback por emoji)
+│   └── pwa/          # ícones do app instalável (192/512/maskable/apple)
 └── package.json
 ```
 
@@ -87,7 +105,6 @@ Lista de nomes e prompts: [`assets/icons/PROMPTS.md`](assets/icons/PROMPTS.md).
 - Timer opcional por rodada
 - Modo diário (1 palavra por dia, resultado compartilhável)
 - Dark/light mode com seletor
-- PWA (instalar no celular)
 
 ## Licença
 
