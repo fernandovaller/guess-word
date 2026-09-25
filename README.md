@@ -5,6 +5,8 @@ descubra a palavra letra a letra e cuidado com os erros — você tem 6 coraçõ
 
 Feito 100% com **HTML5 + CSS3 + JavaScript vanilla** (ES Modules), sem dependências.
 
+![Tela de abertura do Guess the Word](assets/screenshot.png)
+
 ## Como rodar
 
 Os módulos ES não funcionam abrindo o arquivo diretamente (`file://`) — use um servidor local:
