@@ -95,6 +95,20 @@ main { flex: 1; display: flex; }
 .intro-note { margin: 0; font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
 .intro-note .icon { width: 14px; height: 14px; }
 
+/* Créditos: discreto, fora do card, quase se fundindo com o fundo */
+.intro-credits {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.credit-heart .icon { width: 11px; height: 11px; color: var(--wrong); }
+
 /* ===== Topbar ===== */
 .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
 
