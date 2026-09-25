@@ -1,0 +1,11 @@
+{
+  "name": "guess-the-word",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Jogo de adivinhar palavras por tema (estilo forca moderna) — HTML5 + CSS3 + JS vanilla",
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 -m http.server 8080"
+  }
+}

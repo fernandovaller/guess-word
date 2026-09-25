@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guess the Word — escolha um tema e descubra a palavra letra a letra">
+  <title>Guess the Word</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c6cff' stroke-width='2' stroke-linecap='round'><circle cx='12' cy='12' r='9'/><circle cx='12' cy='12' r='5'/><circle cx='12' cy='12' r='1.5' fill='%237c6cff'/></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1 class="logo"><span data-icon="target"></span><span class="logo-text">Guess the Word</span></h1>
+      <div class="topbar-actions">
+        <button id="btn-sound" class="icon-btn" aria-label="Ativar ou desativar o som"><span data-icon="volume-on"></span></button>
+        <button id="btn-stats" class="icon-btn" aria-label="Ver estatísticas"><span data-icon="chart"></span></button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Abertura: como jogar -->
+      <section id="screen-intro" class="screen active" aria-label="Boas-vindas">
+        <div class="intro-card">
+          <div class="intro-logo" aria-hidden="true"><span data-icon="target"></span></div>
+          <h2 class="intro-title">Guess the Word</h2>
+          <p class="intro-subtitle">Escolha um tema e descubra a palavra letra a letra</p>
+
+          <ul class="how-to">
+            <li>
+              <span class="howto-icon" data-icon="target"></span>
+              <p><strong>Escolha um tema</strong> e uma palavra será sorteada</p>
+            </li>
+            <li>
+              <span class="howto-icon" data-icon="keyboard"></span>
+              <p><strong>Chute letras</strong> no teclado — acento não conta: "A" acerta "á"</p>
+            </li>
+            <li>
+              <span class="howto-icon" data-icon="heart"></span>
+              <p><strong>Cuidado com os erros:</strong> cada letra errada custa 1 dos 6 corações</p>
+            </li>
+            <li>
+              <span class="howto-icon" data-icon="lightbulb"></span>
+              <p><strong>Travou?</strong> A dica revela uma letra, mas custa 1 coração</p>
+            </li>
+          </ul>
+
+          <button id="btn-play" class="btn btn-primary btn-lg"><span data-icon="play"></span> Jogar</button>
+          <p class="intro-note"><span data-icon="trophy"></span> Vencendo você pontua — recorde e sequência ficam salvos</p>
+        </div>
+      </section>
+
+      <!-- Menu: escolha de tema -->
+      <section id="screen-menu" class="screen" aria-label="Escolha de tema">
+        <h2 class="screen-title">Escolha um tema</h2>
+        <div id="theme-grid" class="theme-grid"></div>
+        <button id="btn-howto" class="btn btn-secondary btn-sm btn-howto"><span data-icon="lightbulb"></span> Como jogar</button>
+      </section>
+
+      <!-- Jogo -->
+      <section id="screen-game" class="screen" aria-label="Jogo">
+        <div class="game-top">
+          <button id="btn-back" class="icon-btn" aria-label="Voltar ao menu"><span data-icon="arrow-left"></span></button>
+          <span id="game-theme" class="game-theme"></span>
+          <span id="game-score" class="game-score" aria-label="Pontos da rodada">0 pts</span>
+        </div>
+
+        <div id="hearts" class="hearts" role="img" aria-label="Vidas restantes"></div>
+
+        <div id="word" class="word" aria-label="Palavra secreta"></div>
+
+        <div class="game-actions">
+          <button id="btn-hint" class="btn btn-secondary" title="Revela uma letra oculta: custa 1 coração">
+            <span data-icon="lightbulb"></span> Dica <small>(−1 <span data-icon="heart"></span>)</small>
+          </button>
+        </div>
+
+        <div id="keyboard" class="keyboard" aria-label="Teclado"></div>
+      </section>
+
+      <!-- Resultado -->
+      <section id="screen-result" class="screen" aria-label="Resultado da rodada">
+        <div class="result-card">
+          <h2 id="result-title" class="result-title"></h2>
+          <p class="result-word-label">A palavra era:</p>
+          <p id="result-word" class="result-word"></p>
+          <p id="result-score" class="result-score"></p>
+          <p id="result-streak" class="result-streak"></p>
+          <div class="result-actions">
+            <button id="btn-again" class="btn btn-primary"><span data-icon="repeat"></span> Jogar de novo</button>
+            <button id="btn-menu" class="btn btn-secondary"><span data-icon="home"></span> Trocar tema</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Estatísticas -->
+      <section id="screen-stats" class="screen" aria-label="Estatísticas">
+        <h2 class="screen-title">Estatísticas</h2>
+        <div id="stats-totals" class="stats-totals"></div>
+        <h3 class="stats-subtitle">Por tema</h3>
+        <div id="stats-themes" class="stats-themes"></div>
+        <div class="stats-actions">
+          <button id="btn-stats-back" class="btn btn-secondary"><span data-icon="arrow-left"></span> Voltar</button>
+          <button id="btn-reset-stats" class="btn btn-danger">Apagar estatísticas</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

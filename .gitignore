@@ -1,0 +1,21 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+# Metadados do Windows/WSL (ex.: imagem.png:Zone.Identifier)
+*:Zone.Identifier
+
+# Editores / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (caso adicione ferramentas de build no futuro)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Logs e temporários
+*.log
+*.tmp
