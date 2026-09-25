@@ -50,6 +50,11 @@ const rawSfx = {
     tone(1200, { dur: 0.12, type: 'triangle' });
     tone(1600, { at: 0.09, dur: 0.12, type: 'triangle' });
   },
+  // Ação destrutiva confirmada: dois tons descendo ("algo foi removido")
+  confirm() {
+    tone(320, { dur: 0.12, type: 'triangle', vol: 0.1 });
+    tone(180, { at: 0.09, dur: 0.2, type: 'sawtooth', vol: 0.07 });
+  },
   win() {
     [523, 659, 784, 1047].forEach((f, i) => tone(f, { at: i * 0.12, dur: 0.18 }));
   },

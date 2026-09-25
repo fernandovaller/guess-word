@@ -2,6 +2,7 @@
 // Também é a entrada pela topbar (botão global do app).
 
 import { sfx } from '../audio.js';
+import { confirmDialog } from '../views/ConfirmDialog.js';
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -24,8 +25,15 @@ export class StatsController {
       this.onBack();
     });
 
-    document.querySelector('#btn-reset-stats').addEventListener('click', () => {
-      if (!confirm('Apagar todas as estatísticas?')) return;
+    document.querySelector('#btn-reset-stats').addEventListener('click', async () => {
+      sfx.click();
+      const ok = await confirmDialog({
+        title: 'Apagar estatísticas?',
+        message: 'Todos os jogos, recordes e sequências serão perdidos. Não dá para desfazer.',
+        confirmLabel: 'Apagar tudo',
+        danger: true,
+      });
+      if (!ok) return;
       this.statsService.reset();
       this.view.render(this.statsService.data);
     });

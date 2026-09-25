@@ -355,6 +355,7 @@ main { flex: 1; display: flex; }
 
 /* ===== Animações ===== */
 @keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes modal-pop { from { opacity: 0; transform: scale(0.88) translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes flip { from { transform: rotateX(-90deg); opacity: 0; } to { transform: rotateX(0); opacity: 1; } }
 @keyframes heart-lose { 0% { transform: scale(1.4); } 100% { transform: scale(0.8); } }
 @keyframes shake {
@@ -368,6 +369,60 @@ main { flex: 1; display: flex; }
 
 .shake { animation: shake 0.45s ease; }
 .pulse { animation: pulse 0.25s ease; }
+
+/* ===== Modal de confirmação ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgb(10 12 24 / 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal-overlay.open { display: flex; animation: fade-in 0.2s ease backwards; }
+
+.modal-card {
+  width: min(400px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.45);
+  animation: modal-pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.modal-icon {
+  align-self: center;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgb(255 84 112 / 0.12);
+  color: var(--wrong);
+  margin-bottom: 4px;
+}
+
+.modal-icon .icon { width: 26px; height: 26px; }
+
+.modal-title { margin: 0; font-size: 1.2rem; }
+.modal-message { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+
+.modal-actions { display: flex; gap: 10px; margin-top: 10px; }
+.modal-actions .btn { flex: 1; }
+
+/* Vermelho cheio: a ação destrutiva não pode passar despercebida */
+.btn-danger-solid { background: var(--wrong); color: #fff; }
 
 /* ===== Responsivo ===== */
 @media (max-width: 380px) {

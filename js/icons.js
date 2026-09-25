@@ -40,6 +40,8 @@ const ICONS = {
   crown: '<path d="M3 6l4.5 3.5L12 4l4.5 5.5L21 6l-2.2 11H5.2L3 6z"/><path d="M6 20.5h12"/>',
 
   star: '<path fill="currentColor" stroke="none" d="M12 2.5l2.95 5.98 6.6.96-4.78 4.65 1.13 6.58L12 17.58l-5.9 3.09 1.13-6.58L2.45 9.44l6.6-.96L12 2.5z"/>',
+
+  trash: '<path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/>',
 };
 
 // ===== Override por imagem =====
